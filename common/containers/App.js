@@ -32,7 +32,7 @@ class App extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    isFetching: false,
+    isFetching: state.isFetching,
     user: state.user
   }
 }
