@@ -1,31 +1,31 @@
 /**
- * User (root) Reducer
+ * User Reducer
  */
 
-import UserActions from '../actions/user.js';
-import AppConstants from '../constants/constants.js';
+import {
+  LOG_IN, LOG_OUT,
+  INVALIDATE_API_DATA
+} from '../actions/user';
 
 const initialState = {
-  user: {}
-};
+  logged_in: false,
+  stats: {}
+}
 
 export default function user(state = initialState, action) {
   switch(action.type) {
     
-    case AppConstants.SET_CURRENT_USER:
+    // Instagram OAUTH action needs to happen here
+    case LOG_IN:
       return Object.assign({}, state, {
-        user: action.userData
-      });
+        logged_in: true
+      })
 
-    case AppConstants.RECEIVE_DATA:
-      break;
-
-    case AppConstants.RECEIVE_API_ERR:
-      break;
-
-    case AppConstants.RECEIVE_LIKED_PICTURES_DATA:
-      break;
-
+    case LOG_OUT:
+      return Object.assign({}, state, {
+        logged_in: false
+      })
+    
     default:
       return state;
   }

@@ -2,45 +2,31 @@
  * User Actions and Action Creators
  */
 
-import Constants from '../constants/constants.js';
+import fetch from 'isomorphic-fetch'
 
-var UserActions = {
-  /**
-   * Set current user action
-   */
-  setCurrentUser(userData) {
-    return {
-      type: AppConstants.SET_CURRENT_USER,
-      userData: userData
-    }
-  },
+export const LOG_IN = 'LOG_IN'
+export const LOG_OUT = 'LOG_OUT'
+export const INVALIDATE_API_DATA = 'INVALIDATE_API_DATA'
 
-  /**
-   * Generic receive data action
-   */
-  receiveData(data, type) {
-    return {
-      type: type,
-      data: data
-    }
-  },
-
-  /**
-   * Receive API error action
-   */
-  receiveApiError(err) {
-    return {
-      type: AppConstants.RECEIVE_API_ERR,
-      err: err
-    }
-  },
-
-  /**
-   * Get data for LikedPictures component
-   */
-  getLikedPicturesData() {
-    ApiUtils.getLikedPicturesData();
+export function logIn() {
+  return {
+    type: LOG_IN
   }
 }
 
-export default UserActions;
+export function logOut() {
+  return {
+    type: LOG_OUT
+  }
+}
+
+export function refreshData(userData) {
+  return {
+    type: INVALIDATE_API_DATA,
+    userData
+  }
+}
+
+function authenticateUser() {
+  
+}
