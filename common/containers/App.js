@@ -1,47 +1,46 @@
+/**
+ * Root App Container Component
+ */
+
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { pushState } from 'redux-router'
 
+// Load styles if on the client-side
+// TODO: Figure out server-side styles
 if (process.env.BROWSER) {
   require('../style.less')
 }
 
-import UserActions from '../actions/user.js'
-import Instats from '../components/Instats.js'
+import Instats from '../components/Instats'
 
-/**
- * App Container Component
- */
 class App extends React.Component {
 
   constructor(props) {
-    super(props);
-    console.log("App props: ", this.props);
+    super(props)
+    console.log("App props: ", this.props)
   }
 
-  /**
-   * Render the App RouteHandler component
-   */
   render() {
-    const { user, accessToken } = this.props;
+    const { user } = this.props
     return (
       <Instats user={user} />
-    );
+    )
   }
 }
 
 function mapStateToProps(state) {
   return {
-    accessToken: state.access_token,
+    isFetching: false,
     user: state.user
-  };
+  }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(UserActions, dispatch)
-  };
-}
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     actions: bindActionCreators(UserActions, dispatch)
+//   }
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App)
