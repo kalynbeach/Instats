@@ -32,10 +32,11 @@ class App extends Component {
   }
 
   componentDidMount() {
+    // Request the access token and user
     if (!!this.props.location.query.code) {
       console.log("Code has been received! ")
-      // This is where the POST request for the
-      // user access token needs to be called
+      // This is where the fetchAccessToken() action
+      // needs to be dispatched
     }
   }
 
