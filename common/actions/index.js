@@ -9,6 +9,8 @@ export const REQUEST_API_DATA = 'REQUEST_API_DATA'
 export const RECEIVE_API_DATA = 'RECEIVE_API_DATA'
 export const RECEIVE_API_DATA_ERROR = 'RECEIVE_DATA_ERROR'
 
+export const AUTHENICATE_USER = 'AUTHENICATE_USER'
+
 // API action constants
 export const LIKED_PICTURES_DATA = 'GET_LIKED_PICTURES_DATA'
 
@@ -23,6 +25,12 @@ export function receiveData(apiData) {
 	return {
 		type: RECEIVE_API_DATA,
 		apiData
+	}
+}
+
+function authenicateUser() {
+	return dispatch => {
+		
 	}
 }
 

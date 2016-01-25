@@ -26,7 +26,3 @@ export function refreshData(userData) {
     userData
   }
 }
-
-function authenticateUser() {
-  
-}

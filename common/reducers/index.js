@@ -3,6 +3,7 @@
  */
 
 import { combineReducers } from 'redux'
+import { routeReducer } from 'react-router-redux'
 
 // Index actions
 import {
@@ -49,9 +50,11 @@ function data(state ={
 	}
 }
 
-const rootReducer = combineReducers({
+const rootReducer = combineReducers(Object.assign({},{
 	isFetching,
   user
-})
+}, {
+	routing: routeReducer
+}))
 
 export default rootReducer
