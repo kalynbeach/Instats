@@ -7,15 +7,20 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { pushState } from 'redux-router'
 
+import {
+  Col
+} from 'react-bootstrap'
+
+import Header from '../components/header.js'
+import Body from '../components/body.js'
+
 // Load styles if on the client-side
 // TODO: Figure out server-side styles
 if (process.env.BROWSER) {
   require('../style.less')
 }
 
-import Instats from '../components/Instats'
-
-class App extends React.Component {
+class App extends Component {
 
   constructor(props) {
     super(props)
@@ -23,24 +28,27 @@ class App extends React.Component {
   }
 
   render() {
-    const { user } = this.props
+    const { dispatch, isFetching, user } = this.props
     return (
-      <Instats user={user} />
+      <Col sm={8} smOffset={2}>
+        <Header
+          user={this.props.user} 
+        />
+        <Body
+          user={this.props.user}
+        />
+      </Col>
     )
   }
 }
 
+// "Selector" function: takes Redux store state and
+// returns the props needed for the App component
 function mapStateToProps(state) {
   return {
     isFetching: state.isFetching,
     user: state.user
   }
 }
-
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     actions: bindActionCreators(UserActions, dispatch)
-//   }
-// }
 
 export default connect(mapStateToProps)(App)

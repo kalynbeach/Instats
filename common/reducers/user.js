@@ -5,7 +5,7 @@
 import {
   LOG_IN, LOG_OUT,
   INVALIDATE_API_DATA
-} from '../actions/user';
+} from '../actions/user'
 
 const initialState = {
   logged_in: false,
@@ -27,6 +27,6 @@ export default function user(state = initialState, action) {
       })
     
     default:
-      return state;
+      return state
   }
 }

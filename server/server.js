@@ -28,7 +28,6 @@ const compiler = webpack(webpackConfig)
 app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: webpackConfig.output.publicPath }))
 app.use(webpackHotMiddleware(compiler))
 
-// This is fired every time the server side receives a request
 app.use(handleRender)
 
 function handleRender(req, res) {
@@ -82,6 +81,6 @@ app.listen(port, (error) => {
   if (error) {
     console.error(error)
   } else {
-    console.info(`==> 🌎  Listening on port ${port}. Open up http://localhost:${port}/ in your browser.`)
+    console.info(`Listening on port ${port}.`)
   }
 })
