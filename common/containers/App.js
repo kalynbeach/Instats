@@ -15,8 +15,8 @@ import {
   Button
 } from 'react-bootstrap'
 
-import Header from '../components/header.js'
-import Body from '../components/body.js'
+import Instats from '../components/instats.js'
+
 
 // Load styles if on the client-side
 // TODO: Figure out server-side styles
@@ -28,8 +28,15 @@ class App extends Component {
 
   constructor(props) {
     super(props)
-    this.handleLoginClick = this.handleLoginClick.bind(this)
     this.createLoginUrl = this.createLoginUrl.bind(this)
+  }
+
+  componentDidMount() {
+    if (!!this.props.location.query.code) {
+      console.log("Code has been received! ")
+      // This is where the POST request for the
+      // user access token needs to be called
+    }
   }
 
   createLoginUrl() {
@@ -39,27 +46,14 @@ class App extends Component {
     return instagramAuthUrl
   }
 
-  handleLoginClick() {
-    const { dispatch } = this.props
-    console.log("Login button was clicked. ")
-    // This is where the user needs to be redirected to
-    // the Instagram auth url
-    dispatch(UserActions.logIn())
-  }
-
   render() {
     const { dispatch, isFetching, user } = this.props
     return (
-      <Col sm={8} smOffset={2}>
-        <Header
-          user={this.props.user}
-          loginUrl={this.createLoginUrl}
-          onLoginClick={this.handleLoginClick}
-        />
-        <Body
-          user={this.props.user}
-        />
-      </Col>
+      <Instats
+        isFetching={this.props.isFetching}
+        user={this.props.user}
+        loginUrl={this.createLoginUrl()}
+      />
     )
   }
 }
