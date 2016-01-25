@@ -30,7 +30,10 @@ class Header extends React.Component {
           <h4> User: </h4>
         </Col>
         <Col sm={3} className="header-col">
-          <Button bsStyle="default" onClick={(e) => this.handleLoginClick(e)}>Login</Button>
+          <Button bsStyle="default"
+           href={this.props.loginUrl()}
+           onClick={(e) => this.handleLoginClick(e)}
+           >Login</Button>
         </Col>
       </Row>
     )

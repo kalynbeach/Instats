@@ -29,6 +29,14 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.handleLoginClick = this.handleLoginClick.bind(this)
+    this.createLoginUrl = this.createLoginUrl.bind(this)
+  }
+
+  createLoginUrl() {
+    var instagramClientId = '2aa61affaafa4e8db47b23187b7a8930'
+    var instagramRedirectUrl =  'http://localhost:8080'
+    var instagramAuthUrl = `https://api.instagram.com/oauth/authorize/?client_id=${instagramClientId}&redirect_uri=${instagramRedirectUrl}&response_type=code`
+    return instagramAuthUrl
   }
 
   handleLoginClick() {
@@ -45,6 +53,7 @@ class App extends Component {
       <Col sm={8} smOffset={2}>
         <Header
           user={this.props.user}
+          loginUrl={this.createLoginUrl}
           onLoginClick={this.handleLoginClick}
         />
         <Body
