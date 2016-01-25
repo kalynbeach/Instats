@@ -5,10 +5,14 @@
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { pushState } from 'redux-router'
+import { routeActions } from 'react-router-redux'
+
+import * as IndexActions from '../actions/index'
+import * as UserActions from '../actions/user'
 
 import {
-  Col
+  Col,
+  Button
 } from 'react-bootstrap'
 
 import Header from '../components/header.js'
@@ -24,7 +28,15 @@ class App extends Component {
 
   constructor(props) {
     super(props)
-    console.log("App props: ", this.props)
+    this.handleLoginClick = this.handleLoginClick.bind(this)
+  }
+
+  handleLoginClick() {
+    const { dispatch } = this.props
+    console.log("Login button was clicked. ")
+    // This is where the user needs to be redirected to
+    // the Instagram auth url
+    dispatch(UserActions.logIn())
   }
 
   render() {
@@ -32,7 +44,8 @@ class App extends Component {
     return (
       <Col sm={8} smOffset={2}>
         <Header
-          user={this.props.user} 
+          user={this.props.user}
+          onLoginClick={this.handleLoginClick}
         />
         <Body
           user={this.props.user}

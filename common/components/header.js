@@ -15,6 +15,10 @@ class Header extends React.Component {
   constructor(props) {
     super(props)
   }
+
+  handleLoginClick(e) {
+    this.props.onLoginClick()
+  }
   
   render() {
     return (
@@ -26,7 +30,7 @@ class Header extends React.Component {
           <h4> User: </h4>
         </Col>
         <Col sm={3} className="header-col">
-          <Button bsStyle="default">Login</Button>
+          <Button bsStyle="default" onClick={(e) => this.handleLoginClick(e)}>Login</Button>
         </Col>
       </Row>
     )
