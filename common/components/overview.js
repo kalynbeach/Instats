@@ -2,11 +2,11 @@
  * Stats Overview Component
  */
 
-import React from 'react';
+import React, { Component, PropTypes } from 'react'
 import {
   Row,
   Col
-} from 'react-bootstrap';
+} from 'react-bootstrap'
 
 class Overview extends React.Component {
 
@@ -14,14 +14,12 @@ class Overview extends React.Component {
       return (
         <div className="overview">
           <Row id="overview-liked-pictures-row">
-            <Col sm={12}>
-              <h3>Liked Pictures: </h3>
-            </Col>
+            <Col sm={12}></Col>
           </Row>
         </div>
-      );
+      )
   }
   
 }
 
-export default Overview;
+export default Overview

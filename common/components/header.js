@@ -2,18 +2,18 @@
  * Header Component
  */
 
-import React from 'react';
+import React, { Component, PropTypes } from 'react'
 import {
   Row,
   Col,
   Button,
   Image
-} from 'react-bootstrap';
+} from 'react-bootstrap'
 
 class Header extends React.Component {
 
   constructor(props) {
-    super(props);
+    super(props)
   }
   
   render() {
@@ -29,9 +29,9 @@ class Header extends React.Component {
           <Button bsStyle="default">Login</Button>
         </Col>
       </Row>
-    );
+    )
   }
 }
 
-export default Header;
+export default Header
 
