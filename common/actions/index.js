@@ -1,5 +1,5 @@
 /**
- * Root Actions and Action Creators
+ * Index (Root) Actions and Action Creators
  */
 
 import fetch from 'isomorphic-fetch'

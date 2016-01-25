@@ -32,7 +32,7 @@ function isFetching(state = false, action) {
 function data(state ={
 	isFetching: false,
 	didInvalidate: false,
-	apiDataType: undefined
+	apiDataType: undefined,
 	data: {}
 }, action) {
 	switch (action.type) {
@@ -50,6 +50,7 @@ function data(state ={
 }
 
 const rootReducer = combineReducers({
+	isFetching,
   user
 })
 
