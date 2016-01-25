@@ -1,13 +1,14 @@
-// Instats Body Component
+/**
+ * Body Component
+ */
 
-import React from 'react'
+import React, { Component, PropTypes } from 'react'
 import {
   Row,
   Col
 } from 'react-bootstrap'
 
 import Overview from './overview.js'
-// import LikedPictures from './stats/LikedPictures.jsx'
 
 class Body extends React.Component {
 

@@ -8,7 +8,7 @@ import {
 } from '../actions/user'
 
 const initialState = {
-  logged_in: false,
+  loggedIn: false,
   stats: {}
 }
 
@@ -18,12 +18,12 @@ export default function user(state = initialState, action) {
     // Instagram OAUTH action needs to happen here
     case LOG_IN:
       return Object.assign({}, state, {
-        logged_in: true
+        loggedIn: true
       })
 
     case LOG_OUT:
       return Object.assign({}, state, {
-        logged_in: false
+        loggedIn: false
       })
     
     default:
