@@ -1,7 +1,15 @@
+/**
+ * Client Index
+ */
+
 import 'babel-core/polyfill'
+
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
+import { Router, Route, browserHistory } from 'react-router'
+import { syncHistory, routeReducer } from 'react-router-redux'
+
 import configureStore from '../common/store/configureStore'
 import App from '../common/containers/App'
 
