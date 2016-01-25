@@ -19,11 +19,12 @@ import { syncHistory, routeReducer } from 'react-router-redux'
 
 import configureStore from '../common/store/configureStore'
 import routes from '../common/routes'
-import App from '../common/containers/App'
 
 const app = new Express()
 const port = 8080
 
+// Used for less/css rendering
+// TODO: Figure out server-side styles
 delete process.env.BROWSER
 
 // Webpack hot reloading middleware
@@ -48,6 +49,7 @@ function handleRender(req, res) {
   // Grab the initial state from our Redux store
   const finalState = store.getState()
 
+  // Match the url to its proper response
   match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
     if (error) {
       res.status(500).send(error.message)
@@ -63,9 +65,6 @@ function handleRender(req, res) {
       res.status(404).send('Not found')
     }
   })
-
-  // Send the rendered page back to the client
-  //res.send(renderFullPage(html, finalState))
 }
 
 function renderFullPage(html, initialState) {
