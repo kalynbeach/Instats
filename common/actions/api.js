@@ -23,17 +23,25 @@ function receiveAccessToken(response) {
 
 // Asynchronous Action Creator for getting the user
 // access token and user data
-function fetchAccessToken(code) {
+export function fetchAccessToken(code) {
 	return dispatch => {
 		dispatch(requestAccessToken())
 
-		var clientId = '2aa61affaafa4e8db47b23187b7a8930'
-		var clientSecret = 'ebb3f0f781ff49af9a94d7b326032d2a'
-		var grantType = 'authorization_code'
-		var redirectUri = 'http://localhost:8080'
+		console.log("fetchAccessToken called! ")
 
-		// Use fetch to make a POST request for
-		// the access token and user data here
+		var authForm = new FormData()
 
+		// Instagram's required auth parameters - adjust as needed
+		authForm.append('client_id', '2aa61affaafa4e8db47b23187b7a8930')
+		authForm.append('client_secret', 'ebb3f0f781ff49af9a94d7b326032d2a')
+		authForm.append('grant_type', 'authorization_code')
+		authForm.append('redirect_uri', 'http://localhost:8080')
+		authForm.append('code', code)
+
+		fetch('https://api.instagram.com/oauth/access_token', {
+			method: 'POST',
+			body: authForm,
+			mode: 'no-cors'
+		}).then(response => console.log(response))
 	}
 }

@@ -9,6 +9,7 @@ import { routeActions } from 'react-router-redux'
 
 import * as IndexActions from '../actions/index'
 import * as UserActions from '../actions/user'
+import * as ApiActions from '../actions/api'
 
 import {
   Col,
@@ -16,7 +17,6 @@ import {
 } from 'react-bootstrap'
 
 import Instats from '../components/instats.js'
-
 
 // Load styles if on the client-side
 // TODO: Figure out server-side styles
@@ -32,11 +32,14 @@ class App extends Component {
   }
 
   componentDidMount() {
+    const { dispatch } = this.props
     // Request the access token and user
     if (!!this.props.location.query.code) {
       console.log("Code has been received! ")
       // This is where the fetchAccessToken() action
       // needs to be dispatched
+      let code = this.props.location.query.code
+      dispatch(ApiActions.fetchAccessToken(code))
     }
   }
 
