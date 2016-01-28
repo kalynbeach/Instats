@@ -3,10 +3,15 @@
  */
 
 import {
-	REQUEST_ACCESS_TOKEN, RECEIVE_ACCESS_TOKEN
+	REQUEST_STAT_DATA, RECEIVE_STAT_DATA
 } from '../actions/api'
 
 
-export default function api(state = {}, action) {
-	
+export default function statData(state = {}, action) {
+	switch(action.type) {
+		case RECEIVE_STAT_DATA:
+			return Object.assign({}, state, {
+				[action.statName]: action.statData
+			})
+	}
 }

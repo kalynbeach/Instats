@@ -43,7 +43,13 @@ class Header extends Component {
             <h1> Instats </h1>
           </Col>
           <Col sm={5} className="header-col">
-            <h4> User: {this.props.user.username} </h4>
+            <div id="user">
+              <h4 id="header-username">{this.props.user.username}</h4>
+              <Image
+                id="header-profile-picture"
+                src={this.props.user.profilePicture}
+              />
+            </div>
           </Col>
           <Col sm={3} className="header-col">
             <Button

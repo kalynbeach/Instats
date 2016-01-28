@@ -48,25 +48,6 @@ function user(state = {}, action) {
 	}
 }
 
-// function apiData(state ={
-// 	isFetching: false,
-// 	didInvalidate: false,
-// 	apiDataType: undefined,
-// 	data: {}
-// }, action) {
-// 	switch (action.type) {
-// 		case REQUEST_API_DATA:
-// 			return Object.assign({}, state, {
-// 				apiDataType: action.apiDataType
-// 			})
-// 		case RECEIVE_API_DATA:
-// 			return Object.assign({}, state, {
-// 				data: action.apiData
-// 			})
-// 		default:
-// 			return state
-// 	}
-// }
 
 const rootReducer = combineReducers(Object.assign({},{
 	isFetching,

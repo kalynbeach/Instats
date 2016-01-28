@@ -29,8 +29,7 @@ export default function userData(state = {}, action) {
         fullname: action.fullname,
         id: action.id,
         counts: action.counts,
-        loggedIn: action.loggedIn,
-        stats: action.stats
+        loggedIn: action.loggedIn
       })
     
     default:
