@@ -34,20 +34,22 @@ class App extends Component {
   componentDidMount() {
     const { dispatch } = this.props
     // Request the access token and user
-    if (!!this.props.location.query.code) {
-      console.log("Code has been received! ")
-      // This is where the fetchAccessToken() action
-      // needs to be dispatched
-      let code = this.props.location.query.code
-      dispatch(ApiActions.fetchAccessToken(code))
+    if (!!this.props.location.hash) {
+      // Grab the access token from the url
+      // TODO: Do this via query instead if hash
+      var accessToken = this.props.location.hash.slice(14)
+
+      dispatch(UserActions.receiveAccessToken(accessToken))
+      dispatch(UserActions.fetchUserData(accessToken))
     }
   }
 
   createLoginUrl() {
-    var instagramClientId = '2aa61affaafa4e8db47b23187b7a8930'
-    var instagramRedirectUrl =  'http://localhost:8080'
-    var instagramAuthUrl = `https://api.instagram.com/oauth/authorize/?client_id=${instagramClientId}&redirect_uri=${instagramRedirectUrl}&response_type=code`
-    return instagramAuthUrl
+    // Instagram's required auth parameters - adjust as needed
+    var client_id = '2aa61affaafa4e8db47b23187b7a8930'
+    var redirect_uri = 'http://localhost:8080'
+    var authUrl = `https://api.instagram.com/oauth/authorize/?client_id=${client_id}&redirect_uri=${redirect_uri}&response_type=token`
+    return authUrl
   }
 
   render() {
