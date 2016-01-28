@@ -29,6 +29,7 @@ class Header extends Component {
           <Col sm={3} className="header-col">
             <Button
               bsStyle="default"
+              id="login-button"
               href={this.props.loginUrl}
              >Login</Button>
           </Col>
@@ -42,11 +43,12 @@ class Header extends Component {
             <h1> Instats </h1>
           </Col>
           <Col sm={5} className="header-col">
-            <h3> User: {this.props.user.username} </h3>
+            <h4> User: {this.props.user.username} </h4>
           </Col>
           <Col sm={3} className="header-col">
             <Button
               bsStyle="default"
+              id="settings-button"
              >Settings</Button>
           </Col>
         </Row>

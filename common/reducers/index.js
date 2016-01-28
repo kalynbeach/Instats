@@ -11,9 +11,14 @@ import {
 	RECEIVE_API_DATA_ERROR
 } from '../actions/index'
 
+import {
+	RECEIVE_ACCESS_TOKEN,
+	RECEIVE_USER_DATA
+} from '../actions/user'
+
 // Other reducers
-import user from './user'
-import api from './api'
+import userData from './user'
+//import api from './api'
 
 function isFetching(state = false, action) {
 	switch (action.type) {
@@ -30,31 +35,42 @@ function isFetching(state = false, action) {
 	}
 }
 
-function data(state ={
-	isFetching: false,
-	didInvalidate: false,
-	apiDataType: undefined,
-	data: {}
-}, action) {
-	switch (action.type) {
-		case REQUEST_API_DATA:
-			return Object.assign({}, state, {
-				apiDataType: action.apiDataType
-			})
-		case RECEIVE_API_DATA:
-			return Object.assign({}, state, {
-				data: action.apiData
-			})
+function user(state = {}, action) {
+	switch(action.type) {
+		case RECEIVE_ACCESS_TOKEN:
+			return Object.assign({}, state, userData(state, action))
+
+		case RECEIVE_USER_DATA:
+			return Object.assign({}, state, userData(state, action))
+
 		default:
 			return state
 	}
 }
 
+// function apiData(state ={
+// 	isFetching: false,
+// 	didInvalidate: false,
+// 	apiDataType: undefined,
+// 	data: {}
+// }, action) {
+// 	switch (action.type) {
+// 		case REQUEST_API_DATA:
+// 			return Object.assign({}, state, {
+// 				apiDataType: action.apiDataType
+// 			})
+// 		case RECEIVE_API_DATA:
+// 			return Object.assign({}, state, {
+// 				data: action.apiData
+// 			})
+// 		default:
+// 			return state
+// 	}
+// }
+
 const rootReducer = combineReducers(Object.assign({},{
 	isFetching,
   user
-}, {
-	routing: routeReducer
-}))
+}, { routing: routeReducer }))
 
 export default rootReducer

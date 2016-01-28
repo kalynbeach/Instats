@@ -7,23 +7,30 @@ import {
   INVALIDATE_API_DATA
 } from '../actions/user'
 
-const initialState = {
-  loggedIn: false,
-  stats: {}
-}
+import {
+  REQUEST_ACCESS_TOKEN, RECEIVE_ACCESS_TOKEN,
+  REQUEST_USER_DATA, RECEIVE_USER_DATA
+} from '../actions/user'
 
-export default function user(state = initialState, action) {
+export default function userData(state = {}, action) {
   switch(action.type) {
-    
-    // Instagram OAUTH action needs to happen here
-    case LOG_IN:
+
+    case RECEIVE_ACCESS_TOKEN:
       return Object.assign({}, state, {
-        loggedIn: true
+        accessToken: action.accessToken
       })
 
-    case LOG_OUT:
+    case RECEIVE_USER_DATA:
       return Object.assign({}, state, {
-        loggedIn: false
+        username: action.username,
+        bio: action.bio,
+        website: action.website,
+        profilePicture: action.profilePicture,
+        fullname: action.fullname,
+        id: action.id,
+        counts: action.counts,
+        loggedIn: action.loggedIn,
+        stats: action.stats
       })
     
     default:

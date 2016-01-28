@@ -28,11 +28,6 @@ export function receiveData(apiData) {
 	}
 }
 
-function authenicateUser() {
-	return dispatch => {
-		
-	}
-}
 
 
 

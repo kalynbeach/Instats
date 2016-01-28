@@ -40,7 +40,18 @@ function handleRender(req, res) {
   const initialState = { 
     routing: routeReducer,
     isFetching: false,
-    user: undefined
+    user: {
+      accessToken: '',
+      username: '',
+      bio: '',
+      website: '',
+      profilePicture: '',
+      fullname: '',
+      id: '',
+      counts: {},
+      loggedIn: false,
+      stats: {}
+    }
   }
 
   // Create a new Redux store instance
@@ -48,6 +59,9 @@ function handleRender(req, res) {
 
   // Grab the initial state from our Redux store
   const finalState = store.getState()
+
+  console.log("initialState: ", initialState)
+  console.log("finalState: ", finalState)
 
   // Match the url to its proper response
   match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
