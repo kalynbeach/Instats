@@ -52,8 +52,7 @@ function receiveUserData(userData) {
     fullname: userData.full_name,
     id: userData.id,
     counts: userData.counts,
-    loggedIn: true,
-    stats: {}
+    loggedIn: true
   }
 }
 
