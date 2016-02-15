@@ -73,7 +73,6 @@ export function fetchUserData(accessToken) {
     }).then(response => {
       return response.json()
     }).then(userData => {
-      console.dir(userData.data)
       dispatch(receiveUserData(userData.data))
     })
   }
