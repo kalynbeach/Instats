@@ -36,7 +36,7 @@ class App extends Component {
     // Request the access token and user
     if (!!this.props.location.hash) {
       // Grab the access token from the url
-      // TODO: Do this via query instead if hash
+      // TODO: Do this via query instead of hash
       var accessToken = this.props.location.hash.slice(14)
 
       dispatch(UserActions.receiveAccessToken(accessToken))
