@@ -64,6 +64,11 @@ class App extends Component {
   }
 }
 
+App.propTypes = {
+  isFetching: PropTypes.bool.isRequired,
+  user: PropTypes.object.isRequired
+}
+
 // "Selector" function: takes Redux store state and
 // returns the props needed for the App component
 function mapStateToProps(state) {
