@@ -10,30 +10,31 @@ export const RECEIVE_STAT_DATA = 'RECEIVE_STAT_DATA'
 
 export const LIKED_POSTS = 'LIKED_POSTS'
 
-export function requestStatData(statType) {
-	// return {
-	// 	type: statType
-	// }
+export function requestStatData(statName, url) {
+  return {
+    type: REQUEST_STAT_DATA,
+    statName,
+    url
+  }
 }
 
 export function receiveStatData(statName, statData) {
-	return {
-		type: RECEIVE_STAT_DATA,
-		statName,
-		statData
-	}
+  return {
+    type: RECEIVE_STAT_DATA,
+    statName,
+    statData
+  }
 }
 
-export function fetchStatData(accessToken, statType) {
+export function fetchStatData(accessToken, statType, url) {
   return dispatch => {
-    return fetchJsonp(`https://api.instagram.com/v1/users/self/?access_token=${accessToken}`, {
+    return fetchJsonp(url, {
       method: 'GET',
       mode: 'cors'
     }).then(response => {
       return response.json()
-    }).then(userData => {
-      console.dir(userData.data)
-      dispatch(receiveUserData(userData.data))
+    }).then(statData => {
+      dispatch(receiveStatData(statData.data))
     })
   }
 }
