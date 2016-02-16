@@ -49,9 +49,9 @@ function handleRender(req, res) {
       fullname: '',
       id: '',
       counts: {},
-      loggedIn: false,
-      stats: {}
-    }
+      loggedIn: false
+    },
+    stats: {}
   }
 
   // Create a new Redux store instance

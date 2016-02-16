@@ -9,7 +9,7 @@ import { routeActions } from 'react-router-redux'
 
 import * as IndexActions from '../actions/index'
 import * as UserActions from '../actions/user'
-import * as ApiActions from '../actions/api'
+import * as StatsActions from '../actions/stats'
 
 import {
   Col,
@@ -29,10 +29,12 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.createLoginUrl = this.createLoginUrl.bind(this)
+    this.gatherStatData = this.gatherStatData.bind(this)
   }
 
   componentDidMount() {
-    const { dispatch } = this.props
+    const { dispatch, user } = this.props
+
     // Request the access token and user
     if (!!this.props.location.hash) {
       // Grab the access token from the url
@@ -52,13 +54,28 @@ class App extends Component {
     return authUrl
   }
 
+  // TODO: Paginated requests!
+  gatherStatData() {
+    const { dispatch, user } = this.props
+
+    var accessToken = user.accessToken
+
+    // Test action parameters
+    var testStatType = 'liked_posts'
+    var testUrl = `https://api.instagram.com/v1/users/self/media/liked?access_token=${accessToken}`
+
+    dispatch(StatsActions.fetchStatData(accessToken, testStatType, testUrl))
+
+  }
+
   render() {
     const { dispatch, isFetching, user } = this.props
     return (
       <Instats
-        isFetching={this.props.isFetching}
-        user={this.props.user}
+        isFetching={isFetching}
+        user={user}
         loginUrl={this.createLoginUrl()}
+        gatherStatData={this.gatherStatData}
       />
     )
   }
@@ -66,7 +83,8 @@ class App extends Component {
 
 App.propTypes = {
   isFetching: PropTypes.bool.isRequired,
-  user: PropTypes.object.isRequired
+  user: PropTypes.object.isRequired,
+  stats: PropTypes.object.isRequired
 }
 
 // "Selector" function: takes Redux store state and
@@ -74,7 +92,8 @@ App.propTypes = {
 function mapStateToProps(state) {
   return {
     isFetching: state.isFetching,
-    user: state.user
+    user: state.user,
+    stats: state.stats
   }
 }
 

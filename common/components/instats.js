@@ -40,6 +40,7 @@ class Instats extends Component {
           <Header
             user={this.props.user}
             loginUrl={this.props.loginUrl}
+            gatherStatData={this.props.gatherStatData}
           />
           <Body
             user={this.props.user}

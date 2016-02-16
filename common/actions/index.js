@@ -11,9 +11,6 @@ export const RECEIVE_API_DATA_ERROR = 'RECEIVE_DATA_ERROR'
 
 export const AUTHENICATE_USER = 'AUTHENICATE_USER'
 
-// API action constants
-export const LIKED_PICTURES_DATA = 'GET_LIKED_PICTURES_DATA'
-
 export function requestData(apiDataType) {
 	return {
 		type: REQUEST_API_DATA,
