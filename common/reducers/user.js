@@ -2,10 +2,7 @@
  * User Reducer
  */
 
-import {
-  LOG_IN, LOG_OUT,
-  INVALIDATE_API_DATA
-} from '../actions/user'
+import { combineReducers } from 'redux'
 
 import {
   REQUEST_ACCESS_TOKEN, RECEIVE_ACCESS_TOKEN,
@@ -31,7 +28,7 @@ export default function userData(state = {}, action) {
         counts: action.counts,
         loggedIn: action.loggedIn
       })
-    
+
     default:
       return state
   }
