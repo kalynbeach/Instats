@@ -35,9 +35,11 @@ export function fetchStatData(accessToken, statName, url) {
     }).then(response => {
       return response.json()
     }).then(statData => {
-      console.log("fetchStatData action triggered! ")
-      console.log("statName: ", statName)
-      console.log("statData: ", statData.data)
+      console.log("fetchStatData action triggered: ", statName)
+      console.log("Data: ", statData)
+
+      // Data handling/cleaning needs to happen here
+
       dispatch(receiveStatData(statName, statData.data))
     })
   }
