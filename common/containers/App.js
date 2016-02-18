@@ -55,25 +55,26 @@ class App extends Component {
   }
 
   // TODO: Paginated requests!
+  // TODO: Refactor to allow statType and url to be passed in
   gatherStatData() {
     const { dispatch, user } = this.props
 
     var accessToken = user.accessToken
 
     // Test action parameters
-    var testStatType = 'liked_posts'
+    var testStatName = 'liked_posts'
     var testUrl = `https://api.instagram.com/v1/users/self/media/liked?access_token=${accessToken}`
 
-    dispatch(StatsActions.fetchStatData(accessToken, testStatType, testUrl))
-
+    dispatch(StatsActions.fetchStatData(accessToken, testStatName, testUrl))
   }
 
   render() {
-    const { dispatch, isFetching, user } = this.props
+    const { dispatch, isFetching, user, stats } = this.props
     return (
       <Instats
         isFetching={isFetching}
         user={user}
+        stats={stats}
         loginUrl={this.createLoginUrl()}
         gatherStatData={this.gatherStatData}
       />
