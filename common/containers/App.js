@@ -73,6 +73,8 @@ class App extends Component {
       }
     ]
 
+    dispatch(StatsActions.requestStatData())
+
     statsToGather.forEach((stat) => {
       dispatch(StatsActions.fetchStatData(stat.statName, stat.url, initialStatData))
     })

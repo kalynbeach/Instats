@@ -29,15 +29,11 @@ import statData from './stats'
 function isFetching(state = false, action) {
 	switch (action.type) {
 
-		case REQUEST_API_DATA:
-			return Object.assign({}, state, {
-				isFetching: true
-			})
+		case REQUEST_STAT_DATA:
+			return true
 
-		case RECEIVE_API_DATA:
-			return Object.assign({}, state, {
-				isFetching: false
-			})
+		case RECEIVE_STAT_DATA:
+			return false
 
 		default:
 			return state
