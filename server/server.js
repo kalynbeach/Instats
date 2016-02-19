@@ -60,9 +60,6 @@ function handleRender(req, res) {
   // Grab the initial state from our Redux store
   const finalState = store.getState()
 
-  console.log("initialState: ", initialState)
-  console.log("finalState: ", finalState)
-
   // Match the url to its proper response
   match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
     if (error) {
