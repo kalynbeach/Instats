@@ -14,17 +14,21 @@ class Overview extends React.Component {
 
     // Temporary stats state checking to avoid undefined exceptions
     if (this.props.stats && this.props.stats.hasOwnProperty("liked_posts")) {
-      var numberLikedPosts = this.props.stats.liked_posts.length
+      var likedPosts = this.props.stats.liked_posts
     } else {
-      var numberLikedPosts = 0
+      var likedPosts = {}
     }
 
     return (
       <div className="overview">
         <h2>Stats Overview</h2>
         <Row id="overview-liked-pictures-row">
-          <Col sm={12}>
-            <h4>Liked Posts: {numberLikedPosts}</h4>
+          <Col sm={6}>
+            <h4>Liked Posts: {likedPosts.length}</h4>
+          </Col>
+          <Col sm={6}>
+            <h4>10 Most Recent Liked Posts:</h4>
+
           </Col>
         </Row>
       </div>
