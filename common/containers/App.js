@@ -70,12 +70,15 @@ class App extends Component {
       {
         statName: 'liked_posts',
         url: `https://api.instagram.com/v1/users/self/media/liked?access_token=${accessToken}&count=30`
+      },
+      {
+        statName: 'recent_posts',
+        url: `https://api.instagram.com/v1/users/${user.id}/media/recent/?access_token=${accessToken}`
       }
     ]
 
-    dispatch(StatsActions.requestStatData())
-
     statsToGather.forEach((stat) => {
+      dispatch(StatsActions.requestStatData())
       dispatch(StatsActions.fetchStatData(stat.statName, stat.url, initialStatData))
     })
   }
