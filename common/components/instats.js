@@ -20,6 +20,9 @@ class Instats extends Component {
 
   render() {
 
+    // TODO: Clean up this render method
+    // - Move conditionals and markup into a separate method
+
     // Initial / not logged in UI
     if (!this.props.user.loggedIn) {
       return (
