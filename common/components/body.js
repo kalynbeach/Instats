@@ -17,14 +17,16 @@ class Body extends React.Component {
   }
 
   render() {
+
+    // Save for later
+    //<Overview
+    //  user={this.props.user}
+    //  stats={this.props.stats}
+    ///>
+
     return (
       <Row className="body">
-        <Col sm={12}>
-          <Overview 
-            user={this.props.user}
-            stats={this.props.stats}
-          />
-        </Col>
+        <Col sm={12}></Col>
       </Row>
     )
   }
