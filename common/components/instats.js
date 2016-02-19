@@ -44,6 +44,7 @@ class Instats extends Component {
           />
           <Body
             user={this.props.user}
+            stats={this.props.stats}
           />
         </Col>
       )

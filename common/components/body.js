@@ -22,6 +22,7 @@ class Body extends React.Component {
         <Col sm={12}>
           <Overview 
             user={this.props.user}
+            stats={this.props.stats}
           />
         </Col>
       </Row>
