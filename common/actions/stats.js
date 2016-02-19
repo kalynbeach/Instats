@@ -10,11 +10,9 @@ export const RECEIVE_STAT_DATA = 'RECEIVE_STAT_DATA'
 
 export const LIKED_POSTS = 'LIKED_POSTS'
 
-export function requestStatData(statName, url) {
+export function requestStatData() {
 	return {
-		type: REQUEST_STAT_DATA,
-    statName,
-    url
+		type: REQUEST_STAT_DATA
 	}
 }
 
