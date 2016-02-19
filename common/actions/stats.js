@@ -33,7 +33,7 @@ export function fetchStatData(statName, url, existingStatData) {
     }).then(response => {
       return response.json()
     }).then(statData => {
-      console.log("Stat data fetched!")
+      console.log("Stat data fetched: ", statName)
 
       // Data handling/cleaning needs to happen here
 
