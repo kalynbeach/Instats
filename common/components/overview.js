@@ -5,11 +5,37 @@
 import React, { Component, PropTypes } from 'react'
 import {
   Row,
-  Col
+  Col,
+  Image
 } from 'react-bootstrap'
+
 import ImageGrid from '../components/imageGrid'
 
 class Overview extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.images = this.images.bind(this)
+  }
+
+  // TODO: Continue work on this method
+  // - Returns an array of image urls for rendering
+  // - Maybe move up to App container for reusability?
+  images(statName, numberOfImages) {
+    const { stats } = this.props
+
+    var selectedPosts = stats[statName].slice(0, 10)
+    var selectedImages = []
+
+    selectedPosts.forEach((post) => {
+      selectedImages.push(post.images.thumbnail.url)
+    })
+
+    console.log("Selected posts from images method: ", selectedPosts)
+    console.log("Selected images from images method: ", selectedImages)
+
+    return selectedImages
+  }
 
   render() {
 
@@ -29,7 +55,6 @@ class Overview extends React.Component {
           </Col>
           <Col sm={6}>
             <h4>10 Most Recent Liked Posts:</h4>
-
           </Col>
         </Row>
       </div>
