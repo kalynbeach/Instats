@@ -55,7 +55,7 @@ class Header extends Component {
             <Button
               bsStyle="default"
               id="settings-button"
-              onClick={this.props.gatherStatData}
+              onClick={this.props.gatherAllStatData}
              >Get Data</Button>
           </Col>
         </Row>

@@ -19,6 +19,7 @@ import {
   REQUEST_STAT_DATA, RECEIVE_STAT_DATA
 } from '../actions/stats'
 
+// Other reducers
 import userData from './user'
 import statData from './stats'
 

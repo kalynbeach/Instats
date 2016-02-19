@@ -29,7 +29,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.createLoginUrl = this.createLoginUrl.bind(this)
-    this.gatherStatData = this.gatherStatData.bind(this)
+    this.gatherAllStatData = this.gatherAllStatData.bind(this)
   }
 
   componentDidMount() {
@@ -46,6 +46,9 @@ class App extends Component {
     }
   }
 
+  /**
+   * Create the user login url
+   */
   createLoginUrl() {
     // Instagram's required auth parameters - adjust as needed
     var client_id = '2aa61affaafa4e8db47b23187b7a8930'
@@ -54,18 +57,25 @@ class App extends Component {
     return authUrl
   }
 
-  // TODO: Paginated requests!
-  // TODO: Refactor to allow statType and url to be passed in
-  gatherStatData() {
+  /**
+   * Dispatch fetchStatData action to gather all stat data
+   */
+  gatherAllStatData() {
     const { dispatch, user } = this.props
-
     var accessToken = user.accessToken
+    var initialStatData = []
 
-    // Test action parameters
-    var testStatName = 'liked_posts'
-    var testUrl = `https://api.instagram.com/v1/users/self/media/liked?access_token=${accessToken}`
+    // Params for Instagram api calls for each stat
+    const statsToGather = [
+      {
+        statName: 'liked_posts',
+        url: `https://api.instagram.com/v1/users/self/media/liked?access_token=${accessToken}`
+      }
+    ]
 
-    dispatch(StatsActions.fetchStatData(accessToken, testStatName, testUrl))
+    statsToGather.forEach((stat) => {
+      dispatch(StatsActions.fetchStatData(stat.statName, stat.url, initialStatData))
+    })
   }
 
   render() {
@@ -76,7 +86,7 @@ class App extends Component {
         user={user}
         stats={stats}
         loginUrl={this.createLoginUrl()}
-        gatherStatData={this.gatherStatData}
+        gatherAllStatData={this.gatherAllStatData}
       />
     )
   }

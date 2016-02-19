@@ -27,7 +27,7 @@ export function receiveStatData(statName, statData) {
 }
 
 // Async action for fetching stats data from Instagram API
-export function fetchStatData(accessToken, statName, url) {
+export function fetchStatData(statName, url, existingStatData) {
   return dispatch => {
     return fetchJsonp(url, {
       method: 'GET',
@@ -35,12 +35,23 @@ export function fetchStatData(accessToken, statName, url) {
     }).then(response => {
       return response.json()
     }).then(statData => {
-      console.log("fetchStatData action triggered: ", statName)
-      console.log("Data: ", statData)
+      console.log("Stat data fetched!")
 
       // Data handling/cleaning needs to happen here
 
-      dispatch(receiveStatData(statName, statData.data))
+      // Paginated requests for data
+      if (statData.pagination.next_url) {
+        var next_url = statData.pagination.next_url
+
+        // Concat newly fetched data with existing stat data
+        var newStatData = existingStatData.concat(statData.data)
+
+        // Fetch more data from next_url
+        dispatch(fetchStatData(statName, next_url, newStatData))
+      } else {
+        console.log("Stat data fetching is done - length: ", existingStatData.length)
+        dispatch(receiveStatData(statName, existingStatData))
+      }
     })
   }
 }
