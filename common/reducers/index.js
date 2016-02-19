@@ -16,7 +16,7 @@ import {
 } from '../actions/user'
 
 import {
-  REQUEST_STAT_DATA, RECEIVE_STAT_DATA
+	REQUEST_STAT_DATA, RECEIVE_STAT_DATA
 } from '../actions/stats'
 
 // Other reducers
@@ -64,7 +64,7 @@ function stats(state = {}, action) {
 	switch(action.type) {
 
 		case RECEIVE_STAT_DATA:
-      return Object.assign({}, state, statData(state, action))
+			return Object.assign({}, state, statData(state, action))
 
 		default:
 			return state
@@ -73,8 +73,8 @@ function stats(state = {}, action) {
 
 const rootReducer = combineReducers(Object.assign({},{
 	isFetching,
-  user,
-  stats
+	user,
+	stats
 }, { routing: routeReducer }))
 
 export default rootReducer
