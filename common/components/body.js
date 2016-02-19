@@ -31,12 +31,9 @@ class Body extends React.Component {
 
 }
 
-// Body.propTypes = {
-//   text: React.PropTypes.string
-// }
-
-// Body.defaultProps = {
-//   text: {}
-// }
+Body.propTypes = {
+  user: React.PropTypes.object,
+  stats: React.PropTypes.object
+}
 
 export default Body

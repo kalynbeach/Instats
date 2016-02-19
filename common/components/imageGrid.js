@@ -23,4 +23,8 @@ class ImageGrid extends React.Component {
   
 }
 
+ImageGrid.propTypes = {
+
+}
+
 export default ImageGrid
