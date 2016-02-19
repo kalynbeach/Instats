@@ -69,7 +69,7 @@ class App extends Component {
     const statsToGather = [
       {
         statName: 'liked_posts',
-        url: `https://api.instagram.com/v1/users/self/media/liked?access_token=${accessToken}`
+        url: `https://api.instagram.com/v1/users/self/media/liked?access_token=${accessToken}&count=30`
       }
     ]
 
