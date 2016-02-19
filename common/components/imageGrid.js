@@ -16,7 +16,20 @@ class ImageGrid extends React.Component {
   }
 
   renderColumns() {
-    switch(this.props.columns) {
+    const { images, columns } = this.props
+
+    var rows = Math.ceil(images.length / columns)
+    var imageWidth = 100
+    var imageHeight = 100
+
+    console.log("ImageGrid number of rows: ", rows)
+
+    // TODO: Write this thing
+    function generateGrid(images, columns, rows) {
+
+    }
+
+    switch(columns) {
       case 1:
         return (
           <Row id="image-grid-row">
@@ -33,9 +46,30 @@ class ImageGrid extends React.Component {
       case 3:
         return (
           <Row id="image-grid-row">
-            <Col className="image-grid-col" sm={4}></Col>
-            <Col className="image-grid-col" sm={4}></Col>
-            <Col className="image-grid-col" sm={4}></Col>
+            <Col className="image-grid-col" sm={4}>
+              <Image
+                className="image-grid-image"
+                src={this.props.images[0]}
+                width={imageWidth}
+                height={imageHeight}
+              />
+            </Col>
+            <Col className="image-grid-col" sm={4}>
+              <Image
+                className="image-grid-image"
+                src={this.props.images[1]}
+                width={imageWidth}
+                height={imageHeight}
+              />
+            </Col>
+            <Col className="image-grid-col" sm={4}>
+              <Image
+                className="image-grid-image"
+                src={this.props.images[2]}
+                width={imageWidth}
+                height={imageHeight}
+              />
+            </Col>
           </Row>
         )
       case 4:
