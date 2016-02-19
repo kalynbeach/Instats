@@ -23,16 +23,12 @@ class Overview extends React.Component {
   // - Maybe move up to App container for reusability?
   images(statName, numberOfImages) {
     const { stats } = this.props
-
     var selectedPosts = stats[statName].slice(0, 10)
     var selectedImages = []
 
     selectedPosts.forEach((post) => {
       selectedImages.push(post.images.thumbnail.url)
     })
-
-    console.log("Selected posts from images method: ", selectedPosts)
-    console.log("Selected images from images method: ", selectedImages)
 
     return selectedImages
   }
@@ -46,6 +42,8 @@ class Overview extends React.Component {
       var likedPosts = {}
     }
 
+    var statName = "liked_posts"
+
     return (
       <div className="overview">
         <h2>Stats Overview</h2>
@@ -54,7 +52,8 @@ class Overview extends React.Component {
             <h4>Liked Posts: {likedPosts.length}</h4>
           </Col>
           <Col sm={6}>
-            <h4>10 Most Recent Liked Posts:</h4>
+            <h4>3 Most Recent Liked Posts:</h4>
+            <ImageGrid images={this.images(statName, 10)} columns={3} />
           </Col>
         </Row>
       </div>

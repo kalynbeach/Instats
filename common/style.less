@@ -32,7 +32,18 @@ body {
 	font-family: @Railway;
 }
 
-// Header component
+.stat {
+	height: @statComponentHeight;
+	background-color: @gray;
+}
+
+// ====================
+//   Component Styles
+// ====================
+
+/**
+ * Header Component
+ */
 .header {
 	.header-col {
 		height: @headerHeight;
@@ -47,8 +58,7 @@ body {
 			float: right;
 			
 			#header-username {
-				padding: 0 3px 0 0;
-				margin: 0 2px 0 0;
+				margin: 0 5px 0 0;
 				display: inline-block;
 				vertical-align: top;
 			}
@@ -56,15 +66,14 @@ body {
 			#header-profile-picture {
 				width: 50px;
 				height: 50px;
-				padding: 0 3px 0 3px;
-				margin: 0 2px 0 2px;
+				margin: 0 5px 0 5px;
 				display: inline-block;
 				vertical-align: top;
 			}
 
 			#header-user-counts {
 				padding: 0 3px 0 3px;
-				margin: 0 0 0 2px;
+				margin: 0 0 0 5px;
 				display: inline-block;
 				vertical-align: top;
 				background-color: @gray;
@@ -87,15 +96,9 @@ body {
 	}
 }
 
-.stat {
-	height: @statComponentHeight;
-	background-color: @gray;
-}
-
-// ====================
-//   Specific Styles
-// ====================
-
+/**
+ * Overview Component
+ */
 .overview {
 	height: 200px;
 	padding: 0px 5px 0px 5px;
@@ -107,8 +110,10 @@ body {
 	}
 }
 
+/**
+ * ImageGrid Component
+ */
 .image-grid {
-	background-color: @darkGray;
 
 	.image-grid-row {
 		

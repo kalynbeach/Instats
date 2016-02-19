@@ -51,7 +51,7 @@ class Header extends Component {
           </Col>
           <Col sm={5} className="header-col">
             <div id="user">
-              <h4 id="header-username">{this.props.user.username}</h4>
+              <h3 id="header-username">{this.props.user.username}</h3>
               <Image
                 id="header-profile-picture"
                 src={this.props.user.profilePicture}
