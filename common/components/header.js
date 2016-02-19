@@ -65,5 +65,11 @@ class Header extends Component {
   }
 }
 
+Header.propTypes = {
+  user: React.PropTypes.object,
+  loginUrl: React.PropTypes.string,
+  gatherAllStatData: React.PropTypes.func
+}
+
 export default Header
 

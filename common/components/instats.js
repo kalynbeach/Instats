@@ -9,8 +9,8 @@ import {
   Button
 } from 'react-bootstrap'
 
-import Header from '../components/header.js'
-import Body from '../components/body.js'
+import Header from '../components/header'
+import Body from '../components/body'
 
 class Instats extends Component {
 
@@ -54,6 +54,14 @@ class Instats extends Component {
     }
   }
 
+}
+
+Instats.propTypes = {
+  isFetching: React.PropTypes.bool,
+  user: React.PropTypes.object,
+  stats: React.PropTypes.object,
+  loginUrl: React.PropTypes.string,
+  gatherAllStatData: React.PropTypes.func 
 }
 
 export default Instats

@@ -7,6 +7,7 @@ import {
   Row,
   Col
 } from 'react-bootstrap'
+import ImageGrid from '../components/imageGrid'
 
 class Overview extends React.Component {
 
@@ -35,6 +36,11 @@ class Overview extends React.Component {
     )
   }
   
+}
+
+Overview.propTypes = {
+  user: React.PropTypes.object,
+  stats: React.PropTypes.object
 }
 
 export default Overview
