@@ -35,74 +35,74 @@ app.use(webpackHotMiddleware(compiler))
 app.use(handleRender)
 
 function handleRender(req, res) {
-  
-  // Compile an initial state
-  const initialState = { 
-    routing: routeReducer,
-    isFetching: false,
-    user: {
-      accessToken: '',
-      username: '',
-      bio: '',
-      website: '',
-      profilePicture: '',
-      fullname: '',
-      id: '',
-      counts: {},
-      loggedIn: false
-    },
-    stats: {}
-  }
 
-  // Create a new Redux store instance
-  const store = configureStore(initialState)
+	// Compile an initial state
+	const initialState = {
+		routing: routeReducer,
+		isFetching: false,
+		user: {
+			accessToken: '',
+			username: '',
+			bio: '',
+			website: '',
+			profilePicture: '',
+			fullname: '',
+			id: '',
+			counts: {},
+			loggedIn: false
+		},
+		stats: {}
+	}
 
-  // Grab the initial state from our Redux store
-  const finalState = store.getState()
+	// Create a new Redux store instance
+	const store = configureStore(initialState)
 
-  // Match the url to its proper response
-  match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
-    if (error) {
-      res.status(500).send(error.message)
-    } else if (redirectLocation) {
-      res.redirect(302, redirectLocation.pathname + redirectLocation.search)
-    } else if (renderProps) {
-      res.status(200).send(renderFullPage(renderToString(
-        <Provider store={store}>
-          <RouterContext {...renderProps} />
-        </Provider>
-      ), finalState))
-    } else {
-      res.status(404).send('Not found')
-    }
-  })
+	// Grab the initial state from our Redux store
+	const finalState = store.getState()
+
+	// Match the url to its proper response
+	match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
+		if (error) {
+			res.status(500).send(error.message)
+		} else if (redirectLocation) {
+			res.redirect(302, redirectLocation.pathname + redirectLocation.search)
+		} else if (renderProps) {
+			res.status(200).send(renderFullPage(renderToString(
+				<Provider store={store}>
+					<RouterContext {...renderProps} />
+				</Provider>
+			), finalState))
+		} else {
+			res.status(404).send('Not found')
+		}
+	})
 }
 
 function renderFullPage(html, initialState) {
-  return `
-    <!doctype html>
-    <html>
-      <head>
-        <title>Instats</title>
-        <link href='https://fonts.googleapis.com/css?family=Raleway:600,700,400' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-        <link rel="stylesheet/less" type="text/css" href="bundle.css" />
-      </head>
-      <body>
-        <div id="app">${html}</div>
-        <script>
-          window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
-        </script>
-        <script src="/static/bundle.js"></script>
-      </body>
-    </html>
-    `
+	return `
+		<!doctype html>
+		<html>
+			<head>
+				<title>Instats</title>
+				<link href='https://fonts.googleapis.com/css?family=Raleway:600,700,400' rel='stylesheet' type='text/css'>
+				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+				<link rel="stylesheet/less" type="text/css" href="bundle.css" />
+			</head>
+			<body>
+				<div id="app">${html}</div>
+				<script>
+					window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
+				</script>
+				<script src="/static/bundle.js"></script>
+			</body>
+		</html>
+		`
 }
 
 app.listen(port, (error) => {
-  if (error) {
-    console.error(error)
-  } else {
-    console.info(`Listening on port ${port}.`)
-  }
+	if (error) {
+		console.error(error)
+	} else {
+		console.info(`Listening on port ${port}.`)
+	}
 })

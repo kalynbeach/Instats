@@ -2,21 +2,24 @@
  * Root App Container Component
  */
 
-import React, { Component, PropTypes } from 'react'
+import React, { Component, PropTypes, Children } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { routeActions } from 'react-router-redux'
-
-import * as IndexActions from '../actions/index'
-import * as UserActions from '../actions/user'
-import * as StatsActions from '../actions/stats'
 
 import {
 	Col,
 	Button
 } from 'react-bootstrap'
 
-import Instats from '../components/instats.js'
+import * as IndexActions from '../actions/index'
+import * as UserActions from '../actions/user'
+import * as StatsActions from '../actions/stats'
+
+import auth from '../utils/auth'
+
+import Landing from '../components/landing'
+import Instats from '../components/instats'
 
 // Load styles if on the client-side
 // TODO: Figure out server-side styles
@@ -24,6 +27,9 @@ if (process.env.BROWSER) {
 	require('../style.less')
 }
 
+/**
+ * App Container Component
+ */
 class App extends Component {
 
 	constructor(props) {
@@ -40,6 +46,10 @@ class App extends Component {
 			// Grab the access token from the url
 			// TODO: Do this via query instead of hash
 			var accessToken = this.props.location.hash.slice(14)
+
+			if (process.env.BROWSER) {
+				auth.setToken(accessToken)
+			}
 
 			dispatch(UserActions.receiveAccessToken(accessToken))
 			dispatch(UserActions.fetchUserData(accessToken))
@@ -83,17 +93,31 @@ class App extends Component {
 		})
 	}
 
+	// TODO: Work on App children rendering based on route
 	render() {
 		const { dispatch, isFetching, user, stats } = this.props
-		return (
-			<Instats
-				isFetching={isFetching}
-				user={user}
-				stats={stats}
-				loginUrl={this.createLoginUrl()}
-				gatherAllStatData={this.gatherAllStatData}
-			/>
-		)
+
+		var content
+
+		if (this.props.children.type.name == "Landing") {
+			content = (
+				<Landing
+					loginUrl={this.createLoginUrl()}
+				/>
+			)
+		} else if (this.props.children.type.name == "Instats") {
+			content = (
+				<Instats
+					isFetching={isFetching}
+					user={user}
+					stats={stats}
+					loginUrl={this.createLoginUrl()}
+					gatherAllStatData={this.gatherAllStatData}
+				/>
+			)
+		}
+
+		return (content)
 	}
 }
 
