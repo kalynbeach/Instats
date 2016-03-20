@@ -21,6 +21,8 @@ import auth from '../utils/auth'
 import Landing from '../components/landing'
 import Instats from '../components/instats'
 
+require('../style.less')
+
 /**
  * App Container Component
  */

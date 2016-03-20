@@ -20,10 +20,6 @@ import { syncHistory, routeReducer } from 'react-router-redux'
 const app = new Express()
 const port = 8080
 
-// Used for less/css rendering
-// TODO: Figure out server-side styles
-// delete process.env.BROWSER
-
 // Webpack hot reloading middleware
 const compiler = webpack(webpackConfig)
 app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: webpackConfig.output.publicPath }))

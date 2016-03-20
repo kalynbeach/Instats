@@ -54,7 +54,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin('[name].css'),
+    // new ExtractTextPlugin('[name].css'),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
