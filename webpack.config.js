@@ -6,7 +6,7 @@ module.exports = {
   devtool: 'inline-source-map',
   entry: [
     'webpack-hot-middleware/client',
-    './client/index.js'
+    './src/index.js'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
@@ -44,6 +44,10 @@ module.exports = {
         }
       },
       {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader'
+      },
+      {
         test: /\.less$/,
         loader: 'style!css!less'
       }
@@ -53,11 +57,6 @@ module.exports = {
     new ExtractTextPlugin('[name].css'),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
-    new webpack.DefinePlugin({
-      "process.env": {
-          BROWSER: JSON.stringify(true)
-      }
-    })
+    new webpack.NoErrorsPlugin()
   ]
 }
