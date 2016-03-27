@@ -10,7 +10,7 @@ import { Provider } from 'react-redux'
 import configureStore from './store/configureStore'
 import routes from './routes'
 
-// require('./style.less')
+require('./style.less')
 
 const store = configureStore()
 

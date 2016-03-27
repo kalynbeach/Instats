@@ -21,8 +21,6 @@ import auth from '../utils/auth'
 import Landing from '../components/landing'
 import Instats from '../components/instats'
 
-require('../style.less')
-
 /**
  * App Container Component
  */
@@ -43,9 +41,7 @@ class App extends Component {
             // TODO: Do this via query instead of hash
             var accessToken = this.props.location.hash.slice(14)
 
-            if (process.env.BROWSER) {
-                auth.setToken(accessToken)
-            }
+            auth.setToken(accessToken)
 
             dispatch(UserActions.receiveAccessToken(accessToken))
             dispatch(UserActions.fetchUserData(accessToken))

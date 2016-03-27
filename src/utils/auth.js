@@ -4,38 +4,26 @@
 
 var auth = {
 
-	login() {
-		if (process.env.BROWSER) {
+    login() {
 
-		}
-	},
+    },
 
-	loggedIn() {
-		if (process.env.BROWSER) {
-			console.log("User logged in: ", !!localStorage.getItem("instagramAccessToken"))
-			return !!localStorage.getItem("instagramAccessToken")
-		} else {
-			return false
-		}
-	},
+    loggedIn() {
+        console.log("User logged in: ", !!localStorage.getItem("instagramAccessToken"))
+        return !!localStorage.getItem("instagramAccessToken")
+    },
 
-	setToken(token) {
-		if (process.env.BROWSER) {
-			localStorage.setItem("instagramAccessToken", token)
-		}
-	},
+    setToken(token) {
+        localStorage.setItem("instagramAccessToken", token)
+    },
 
-	getToken() {
-		if (process.env.BROWSER) {
-			return localStorage.getItem("instagramAccessToken")
-		}
-	},
+    getToken() {
+        return localStorage.getItem("instagramAccessToken")
+    },
 
-	clearToken() {
-		if (process.env.BROWSER) {
-			localStorage.removeItem("instagramAccessToken")
-		}
-	}
+    clearToken() {
+        localStorage.removeItem("instagramAccessToken")
+    }
 }
 
 export default auth
