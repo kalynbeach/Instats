@@ -25,7 +25,7 @@ class Instats extends Component {
 		// - Move conditionals and markup into a separate method
 
 		return (
-			<Col sm={8} smOffset={2}>
+			<Col sm={10} smOffset={1}>
 				<Header
 					user={this.props.user}
 					loginUrl={this.props.loginUrl}

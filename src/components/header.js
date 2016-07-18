@@ -15,7 +15,7 @@ class Header extends Component {
   constructor(props) {
     super(props)
   }
-  
+
   render() {
 
     // Not logged in Header
@@ -39,17 +39,17 @@ class Header extends Component {
     } else {
       return (
         <Row className="header">
-          <Col sm={4} className="header-col">
+          <Col sm={12} md={4} className="header-col">
             <h1> Instats </h1>
           </Col>
-          <Col sm={3} className="header-col">
+          <Col sm={4} md={3} className="header-col">
             <Button
               bsStyle="default"
               id="settings-button"
               onClick={this.props.gatherAllStatData}
              >Get Data</Button>
           </Col>
-          <Col sm={5} className="header-col">
+          <Col sm={8} md={5} className="header-col">
             <div id="user">
               <h3 id="header-username">{this.props.user.username}</h3>
               <Image
@@ -77,4 +77,3 @@ Header.propTypes = {
 }
 
 export default Header
-
